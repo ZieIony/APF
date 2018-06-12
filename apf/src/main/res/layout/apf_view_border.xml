@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="data"
+            type="apf.BorderView"/>
+    </data>
+
+    <FrameLayout
+        android:id="@+id/apf_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@{data.borderThickness.bottom}"
+        android:paddingLeft="@{data.borderThickness.left}"
+        android:paddingRight="@{data.borderThickness.right}"
+        android:paddingTop="@{data.borderThickness.top}"/>
+</layout>
