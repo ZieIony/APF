@@ -1,31 +1,31 @@
 package apf
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.graphics.Canvas
-import android.graphics.Color
 import android.util.AttributeSet
-import apf.databinding.ApfViewBorderBinding
 
-open class BorderView @JvmOverloads constructor(
-        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : BaseView<ApfViewBorderBinding>(context, attrs, defStyleAttr) {
+interface BorderStyle : Style
 
-    override val layout: Int?
-        get() = R.layout.apf_view_border
-
+class BorderStyleImpl(context: Context) : StyleImpl(context), BorderStyle {
     init {
-        borderThickness = BorderThickness(1.0f, 2.0f, 3.0f, 4.0f)
-        borderColor = ColorStateList.valueOf(Color.RED)
+        layout = R.layout.apf_border
     }
+}
 
-    override fun dispatchDraw(canvas: Canvas?) {
-        borderColor?.let {
+open class BorderView : BaseView, BorderStyle {
+
+
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs, BorderStyleImpl(context))
+
+    constructor(context: Context, style: BorderStyleImpl = BorderStyleImpl(context)) : super(context, null, style)
+
+    override fun dispatchDraw(canvas: Canvas) {
+        borderColorProperty?.let {
             paint.color = it.getColorForState(drawableState, it.defaultColor)
-            canvas?.drawRect(0.0f, 0.0f, width.toFloat(), borderThickness.top, paint)
-            canvas?.drawRect(0.0f, 0.0f, borderThickness.left, height.toFloat(), paint)
-            canvas?.drawRect(width - borderThickness.right, 0.0f, width.toFloat(), height.toFloat(), paint)
-            canvas?.drawRect(0.0f, height - borderThickness.bottom, width.toFloat(), height.toFloat(), paint)
+            canvas.drawRect(0.0f, 0.0f, width.toFloat(), borderThicknessProperty.top, paint)
+            canvas.drawRect(0.0f, 0.0f, borderThicknessProperty.left, height.toFloat(), paint)
+            canvas.drawRect(width - borderThicknessProperty.right, 0.0f, width.toFloat(), height.toFloat(), paint)
+            canvas.drawRect(0.0f, height - borderThicknessProperty.bottom, width.toFloat(), height.toFloat(), paint)
         }
         super.dispatchDraw(canvas)
     }

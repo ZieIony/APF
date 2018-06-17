@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="data"
+            type="apf.Button" />
+    </data>
+
+    <apf.BorderView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@{data.backgroundProperty}"
+        android:clickable="@{data.isClickableProperty}"
+        android:paddingBottom="@{data.borderThicknessProperty.bottom+32}"
+        android:paddingLeft="@{data.borderThicknessProperty.left+32}"
+        android:paddingRight="@{data.borderThicknessProperty.right+32}"
+        android:paddingTop="@{data.borderThicknessProperty.top+32}">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@={data.textProperty}"
+            android:textAllCaps="true" />
+    </apf.BorderView>
+</layout>

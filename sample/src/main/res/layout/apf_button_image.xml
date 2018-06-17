@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="data"
+            type="apf.sample.ButtonWithImage" />
+    </data>
+
+    <apf.BorderView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@{data.backgroundProperty}"
+        android:clickable="@{data.isClickableProperty}"
+        android:paddingBottom="@{data.borderThicknessProperty.bottom}"
+        android:paddingLeft="@{data.borderThicknessProperty.left}"
+        android:paddingRight="@{data.borderThicknessProperty.right}"
+        android:paddingTop="@{data.borderThicknessProperty.top}">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:src="@{data.image}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@={data.textProperty}"
+                android:textAllCaps="true" />
+        </LinearLayout>
+    </apf.BorderView>
+</layout>

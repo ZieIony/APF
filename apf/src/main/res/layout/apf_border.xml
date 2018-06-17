@@ -5,7 +5,7 @@
 
         <variable
             name="data"
-            type="apf.BorderView"/>
+            type="apf.BorderView" />
     </data>
 
     <FrameLayout
@@ -15,5 +15,5 @@
         android:paddingBottom="@{data.borderThicknessProperty.bottom}"
         android:paddingLeft="@{data.borderThicknessProperty.left}"
         android:paddingRight="@{data.borderThicknessProperty.right}"
-        android:paddingTop="@{data.borderThicknessProperty.top}"/>
+        android:paddingTop="@{data.borderThicknessProperty.top}" />
 </layout>
